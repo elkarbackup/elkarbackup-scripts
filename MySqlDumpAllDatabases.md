@@ -27,7 +27,7 @@ Pre-script: MySqlDumpAllDatabases.sh
 
 ```
 
-MySQL dumps will be copied to the "Path" field (example: /root/backups/mysql) and ElkarBackup will save this directory.
+MySQL dumps will be copied to the "Path" field (example: /root/backups/mysql) and ElkarBackup will save this directory. If "Path" directory doesn't exist, it will be created on first execution.
 
 
 ### In non-debian based distributions
