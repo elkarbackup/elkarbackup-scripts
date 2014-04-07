@@ -1,7 +1,7 @@
 ## MySqlDumpAllDatabases.sh
 
 This script backups all your client's MySQL databases in individual files.
-It will copy to Elkarbackup only the modified databases.
+After the first copy, only modified databases will be copied.
 
 [Download URL](https://github.com/xezpeleta/elkarbackup-scripts/raw/master/MySqlDumpAllDatabases.sh)
 
