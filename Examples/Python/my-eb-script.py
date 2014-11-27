@@ -5,20 +5,21 @@ import os
 FILE = '/tmp/my-eb-script.out'
 
 def getEnvVars():
-  #ebLevel = str(os.environ['ELKARBACKUP_LEVEL'])
   env = {
     'level': str(os.environ['ELKARBACKUP_LEVEL']),
     'event': str(os.environ['ELKARBACKUP_EVENT']),
     'url': str(os.environ['ELKARBACKUP_URL']),
     'id': str(os.environ['ELKARBACKUP_ID']),
     'path': str(os.environ['ELKARBACKUP_PATH']),
-    'status': str(os.environ['ELKARBACKUP_STATUS'])
+    'status': str(os.environ['ELKARBACKUP_STATUS']),
+    'user': str(os.environ['USER'])
   }
   return env
 
 def writeToFile(data):
   try:
-    f = open(FILE, 'w')
+    f = open(FILE, 'a')
+    f.write('---\n')
     for key,value in data.iteritems():
       f.write('%s: %s\n' % (key, value))
     f.close()
