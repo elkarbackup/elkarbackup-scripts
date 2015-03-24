@@ -5,3 +5,4 @@ Pre-scripts and Post-scripts for [Elkarbackup](http://github.com/elkarbackup/elk
 
   * [MySqlDumpAllDatabases.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/MySqlDumpAllDatabases/README.md)
   * [Nagios.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Nagios/README.md)
+  * Example: [My-eb-script.py](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Examples/Python/README.md)
