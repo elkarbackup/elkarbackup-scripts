@@ -53,6 +53,12 @@ then
 
     # Get all databases list
     databases=`ssh $SSHPARAMS $USER@$HOST "$MYSQL --defaults-file=$MYSQLCNF -e \"SHOW DATABASES;\"" | grep -Ev "(Database|information_schema)"`
+    RESULT=$?
+    if [ $RESULT -ne 0 ]; then
+        echo "ERROR: $databases"
+        exit 1
+    else
+
     for db in $databases; do
         # Dump it!
         ssh $SSHPARAMS $USER@$HOST "$MYSQLDUMP --defaults-file=$MYSQLCNF --force --opt --databases $db --single-transaction > \"$TMP/$db.sql\""
