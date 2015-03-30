@@ -19,6 +19,10 @@ def getEnvVars():
     'client-total-size': str(os.environ.get('ELKARBACKUP_CLIENT_TOTAL_SIZE')),
     'job-total-size': str(os.environ.get('ELKARBACKUP_JOB_TOTAL_SIZE')),
     'job-run-size': str(os.environ.get('ELKARBACKUP_JOB_RUN_SIZE')),
+    'client-start-time': str(os.environ.get('ELKARBACKUP_CLIENT_STARTTIME')),
+    'client-end-time': str(os.environ.get('ELKARBACKUP_CLIENT_ENDTIME')),
+    'job-start-time': str(os.environ.get('ELKARBACKUP_JOB_STARTTIME')),
+    'job-end-time': str(os.environ.get('ELKARBACKUP_JOB_ENDTIME')),
     'user': str(os.environ.get('USER'))
   }
   return env
