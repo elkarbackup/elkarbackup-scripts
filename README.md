@@ -5,6 +5,7 @@ Official Pre-scripts and Post-scripts for [Elkarbackup](http://github.com/elkarb
 
   * [MySqlDumpAllDatabases.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/MySqlDumpAllDatabases/README.md)
   * [Nagios.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Nagios/README.md)
+  * [ebReport](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/ebReport/README.md)
   * Example: [My-eb-script.py](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Examples/Python/README.md)
 
 
@@ -23,7 +24,7 @@ client-start-time: 0
 job-start-time: 1430387642
 client-name: srv01
 id: 1
-recipient-list: 
+recipient-list:
 client-total-size: 268
 owner-email: example@gmail.com
 client-end-time: 0
