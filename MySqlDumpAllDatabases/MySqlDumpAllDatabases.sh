@@ -59,28 +59,29 @@ then
         exit 1
     else
 
-    for db in $databases; do
-        # Dump it!
-        ssh $SSHPARAMS $USER@$HOST "$MYSQLDUMP --defaults-file=$MYSQLCNF --force --opt --databases $db --single-transaction > \"$TMP/$db.sql\""
-        # If we already have an old version...
-        TEST=`ssh $SSHPARAMS $USER@$HOST "test -f $DIR/$db.sql && echo $?"`
-        if [ ${TEST} ]; then
-            # Diff
-            #echo "making a diff"
-            TEST=`ssh $SSHPARAMS $USER@$HOST "diff -q <(cat $TMP/$db.sql|head -n -1) <(cat $DIR/$db.sql|head -n -1) > /dev/null && echo $?"`
-            #echo "diff result: [$TEST]"
-            # If Diff = false, copy tmp dump file
-            if [ ! ${TEST} ]; then
-                ssh $SSHPARAMS $USER@$HOST "cp $TMP/$db.sql $DIR/$db.sql"
-                echo "[$db.sql] Changes detected. New dump saved."
+        for db in $databases; do
+            # Dump it!
+            ssh $SSHPARAMS $USER@$HOST "$MYSQLDUMP --defaults-file=$MYSQLCNF --force --opt --databases $db --single-transaction > \"$TMP/$db.sql\""
+            # If we already have an old version...
+            TEST=`ssh $SSHPARAMS $USER@$HOST "test -f $DIR/$db.sql && echo $?"`
+            if [ ${TEST} ]; then
+                # Diff
+                #echo "making a diff"
+                TEST=`ssh $SSHPARAMS $USER@$HOST "diff -q <(cat $TMP/$db.sql|head -n -1) <(cat $DIR/$db.sql|head -n -1) > /dev/null && echo $?"`
+                #echo "diff result: [$TEST]"
+                # If Diff = false, copy tmp dump file
+                if [ ! ${TEST} ]; then
+                    ssh $SSHPARAMS $USER@$HOST "cp $TMP/$db.sql $DIR/$db.sql"
+                    echo "[$db.sql] Changes detected. New dump saved."
+                else
+                    echo "[$db.sql] No changes detected. Nothing to save."
+                fi
             else
-                echo "[$db.sql] No changes detected. Nothing to save."
+                echo "[$db.sql] First dump created!"
+                ssh $SSHPARAMS $USER@$HOST "cp $TMP/$db.sql $DIR/$db.sql"
             fi
-        else
-            echo "[$db.sql] First dump created!"
-            ssh $SSHPARAMS $USER@$HOST "cp $TMP/$db.sql $DIR/$db.sql"
-        fi
-    done
+        done
+    fi
 fi
 
 exit 0
