@@ -6,6 +6,8 @@ Official Pre-scripts and Post-scripts for [Elkarbackup](http://github.com/elkarb
   * [MySqlDumpAllDatabases.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/MySqlDumpAllDatabases/README.md)
   * [Nagios.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Nagios/README.md)
   * [ebReport](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/ebReport/README.md)
+  * [encrypt](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/encrypt/README.md)
+  * [dropbox](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/dropbox/README.md)
 
 ## Create your own script
 ### Available environment variables in scripts
