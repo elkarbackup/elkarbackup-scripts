@@ -6,13 +6,11 @@ Official Pre-scripts and Post-scripts for [Elkarbackup](http://github.com/elkarb
   * [MySqlDumpAllDatabases.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/MySqlDumpAllDatabases/README.md)
   * [Nagios.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Nagios/README.md)
   * [ebReport](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/ebReport/README.md)
-  * Example: [My-eb-script.py](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Examples/Python/README.md)
-
 
 ## Create your own script
 ### Available environment variables in scripts
 
-You can use `My-eb-script.py` for testing purposes. It will create a file in `/tmp` directory with the output of all available environment variables. Example:
+You can use [My-eb-script.py](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Examples/Python/README.md) for testing purposes. It will create a file in `/tmp` directory with the output of all available environment variables. Example:
 
 ```py
 status: 0
