@@ -1,0 +1,91 @@
+#! /bin/bash
+
+# Filename: encrypt.ebs
+# Description: this ElkarBackup post-script will keep an encrypted copy
+#              of the client/job backup files
+# Required:
+#   EncFS must be installed
+#   EncFS volume must be created
+# More info:
+#   https://github.com/elkarbackup/elkarbackup-scripts/tree/master/encrypt
+
+# Data to be encrypted and copied to VOLUME_PATH
+DATA_SOURCE=$ELKARBACKUP_PATH
+
+# Encrypted data will be stored in VOLUME_PATH and will be
+# mounted decrypted using the mounting point VOLUME_MOUNTPOINT
+# VOLUME_PASSWD will be used to decrypt the volume
+VOLUME_PATH=/var/lib/elkarbackup/Dropbox/elkarbackup
+VOLUME_MOUNTPOINT=/mnt/elkarbackup-decrypted
+VOLUME_PASSWD="qwerty"
+
+if [ "$ELKARBACKUP_EVENT" != "POST" ]
+then
+  echo "[ERROR] This script has been designed to be executed as post-script. Aborted."
+  exit 1
+fi
+
+# Is encfs installed?
+ENCFS_BIN=$(which encfs)
+if [ $? -ne 0 ]
+then
+  echo "[ERROR] Cannot find Encfs. Aborted."
+  exit 1
+fi
+
+# Does the volume_path exist?
+# The EncFS volume has been already created?
+if [ ! -d "$VOLUME_PATH" ] || [ ! -f "$VOLUME_PATH/.encfs6.xml" ]
+then
+  echo "[ERROR] Cannot find the Encfs volume under $VOLUME_PATH. Aborted."
+  exit 1
+fi
+
+# If the mounpoint already exist, abort the script
+if [ -d "$VOLUME_MOUNTPOINT" ]
+then
+  echo "[ERROR] The mountpoint $VOLUME_MOUNTPOINT already exist. Aborted."
+  exit 1
+else
+  # Creating mounpoint directory. Will be removed at the end.
+  mkdir -p $VOLUME_MOUNTPOINT
+fi
+
+# The source directory (client/job backup directory) must exist
+if [ ! -d "$DATA_SOURCE" ]
+then
+  echo "[ERROR] The source directory $DATA_SOURCE does not exist. Aborted."
+  exit 1
+fi
+
+# Mount volume
+echo "$VOLUME_PASSWD" | encfs -S $VOLUME_PATH $VOLUME_MOUNTPOINT
+if [ $? -ne 0 ]
+then
+  echo "[ERROR] Error mounting the EncFS volume"
+  exit 1
+fi
+
+# Obtain the DATA_DEST path based on CLIENT_ID or JOB_ID
+if [ "$ELKARBACKUP_LEVEL" == "JOB" ]
+then
+  EB_CLIENTID="$(basename $(dirname $ELKARBACKUP_PATH))"
+  EB_JOBID="$(basename $ELKARBACKUP_PATH)"
+  DATA_DEST="$VOLUME_MOUNTPOINT/backups/$EB_CLIENTID/$EB_JOBID"
+else
+  EB_CLIENTID="$(basename $ELKARBACKUP_PATH)"
+  DATA_DEST="$VOLUME_MOUNTPOINT/backups/$EB_CLIENTID"
+fi
+
+# If DATA_DEST does not exist, create it
+if [ ! -d "$DATA_DEST" ]
+then
+  mkdir -p "$DATA_DEST"
+fi
+
+# Copy backups to the encfs volume, preserving hardlinks
+rsync -avH --delete "$DATA_SOURCE/" "$DATA_DEST"
+
+# Unmount the volume and remove the mountpoint
+fusermount -u "$VOLUME_MOUNTPOINT"
+rm -fR "$VOLUME_MOUNTPOINT"
