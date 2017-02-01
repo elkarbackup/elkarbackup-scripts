@@ -35,7 +35,7 @@ mkdir /var/lib/elkarbackup/Dropbox/elkarbackup
 encfs /var/lib/elkarbackup/Dropbox/elkarbackup /mnt
 #- select "standard" mode (ENTER)
 #- type a password for your encrypted volume
-unmount /mnt
+umount /mnt
 ```
 
 Edit the `encrypt.ebs` script preferences:
