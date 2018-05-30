@@ -1,9 +1,9 @@
-## MySqlDumpAllDatabases.sh
+## backup-mysql.sh
 
 This script backups all your client's MySQL databases in individual files.
 After the first copy, only modified databases will be copied.
 
-[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/MySqlDumpAllDatabases/MySqlDumpAllDatabases.sh)
+[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/backup-mysql/backup-mysql.sh)
 
 ### Configuration
 
