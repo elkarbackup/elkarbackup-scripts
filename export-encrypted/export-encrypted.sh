@@ -1,13 +1,13 @@
 #! /bin/bash
 
-# Filename: encrypt.ebs
+# Filename: export-encrypted.ebs
 # Description: this ElkarBackup post-script will keep an encrypted copy
 #              of the client/job backup files
 # Required:
 #   EncFS must be installed
 #   EncFS volume must be created
 # More info:
-#   https://github.com/elkarbackup/elkarbackup-scripts/tree/master/encrypt
+#   https://github.com/elkarbackup/elkarbackup-scripts/tree/master/export-encrypted
 
 # Data to be encrypted and copied to VOLUME_PATH
 DATA_SOURCE=$ELKARBACKUP_PATH

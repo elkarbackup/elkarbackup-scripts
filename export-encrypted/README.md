@@ -1,4 +1,4 @@
-## encrypt.ebs
+## export-encrypted
 
 This ElkarBackup post-script will keep an encrypted copy of a custom client/job backup files. It can be useful to upload it to a non-secure cloud storage (Dropbox, Google Drive, OneDrive, etc).
 
@@ -6,19 +6,18 @@ This ElkarBackup post-script will keep an encrypted copy of a custom client/job 
 
 Data will be duplicated (encrypted) in the destination directory. Be sure you have enough free disk space.
 
-[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/encrypt/encrypt.ebs)
+[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/export-encrypted/export-encrypted.sh)
 
 ### Configuration
 
 Script level configuration:
 
-```
-CLIENT PRE-SCRIPT:    NO
-CLIENT POST-SCRIPT:   YES
-JOB PRE-SCRIPT:       NO
-JOB POST-SCRIPT:      YES
-```
-
+| Script              | Enabled  |
+| ------------------- | -------- |
+| CLIENT PRE-SCRIPT   |  NO      |
+| CLIENT POST-SCRIPT  |  __YES__ | 
+| JOB PRE-SCRIPT      |  NO      |
+| JOB POST-SCRIPT     |  __YES__ |
 
 ### Instructions
 
@@ -38,7 +37,7 @@ encfs /var/lib/elkarbackup/Dropbox/elkarbackup /mnt
 umount /mnt
 ```
 
-Edit the `encrypt.ebs` script preferences:
+Edit the `export-encrypted.sh` script preferences:
 
 ```bash
 # Destination directory (EncFS volume)
