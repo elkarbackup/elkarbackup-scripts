@@ -1,4 +1,4 @@
-## dropbox.ebs
+## export-dropbox
 
 This script will sync your Dropbox directory. You don't need a script to do
 that, but this script will manage the daemon and will avoid to run Dropbox
@@ -7,23 +7,23 @@ when you don't need it.
  - The Dropbox directory will be synchronized with the cloud
  - The Dropbox daemon will be stopped
 
-It can be specially useful in combination to the encrypt.ebs script.
+It can be specially useful in combination to the [export-encrypted](https://github.com/elkarbackup/elkarbackup-scripts/tree/master/export-encrypted) script.
 
-[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/dropbox/dropbox.ebs)
+[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/export-dropbox/export-dropbox.sh)
 
 ### Configuration
 
 Script level configuration:
 
-```
-CLIENT PRE-SCRIPT:    NO
-CLIENT POST-SCRIPT:   YES
-JOB PRE-SCRIPT:       NO
-JOB POST-SCRIPT:      YES
-```
+| Script              | Enabled  |
+| ------------------- | -------- |
+| CLIENT PRE-SCRIPT   |  NO      |
+| CLIENT POST-SCRIPT  |  __YES__ | 
+| JOB PRE-SCRIPT      |  NO      |
+| JOB POST-SCRIPT     |  __YES__ |
 
-If you are using it in combination with encrypt.ebs script, make sure that the
-dropbox.ebs is executed after the encrypt.ebs.
+If you are using it in combination with `export-encrypted.sh` script, make sure that the
+`export-dropbox.sh` is executed after the `export-encrypted.sh`.
 
 ### Instructions
 
