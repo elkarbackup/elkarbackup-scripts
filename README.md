@@ -5,12 +5,12 @@ Official scripts for [Elkarbackup](http://github.com/elkarbackup/elkarbackup):
 
 | Name           | Description            |
 | -------------- | ---------------------- |
-| [dropbox.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/dropbox/) | Upload your files to Dropbox |
-| [encrypt.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/encrypt/) | Encrypt your backup files (with EncFS) |
-| [json-report.py](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/json-report/) | Print backup result in json format |
-| [mysqldump.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/mysqldump/) | Dump all the MySQL databases from the client's host |
-| [nagios.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/nagios/) | Report the backup job result to Nagios (via NSCA) |
-| [permissions.sh](https://github.com/elkarbackup/elkarbackup-scripts/tree/master/permissions) | Back up permissions/ownership in a file (with getfacl) |  
+| [backup-mysql](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/backup-mysql/) | Dump all the MySQL databases from the client's host |
+| [backup-permissions](https://github.com/elkarbackup/elkarbackup-scripts/tree/master/backup-permissions) | Back up permissions/ownership in a file (with getfacl) |
+| [export-dropbox](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/export-dropbox/) | Upload your files to Dropbox |
+| [export-encrypted](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/export-encrypt/) | Encrypt your backup files (with EncFS) |
+| [report-json](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/report-json/) | Print backup result in json format |
+| [report-nagios](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/report-nagios/) | Report the backup job result to Nagios (via NSCA) |
 
 
 ## Create your own script
