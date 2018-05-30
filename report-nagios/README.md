@@ -1,8 +1,8 @@
-## Nagios.sh
+## report-nagios
 
 Report to Nagios via NSCA the backup job result
 
-[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/Nagios/Nagios.sh)
+[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/report-nagios/report-nagios.sh)
 
 ### Configuration
 
