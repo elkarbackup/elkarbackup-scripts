@@ -1,14 +1,23 @@
 ## backup-permissions.sh
 
-This script will back up file ownership and permissions in the backup directory
-recursively.
+This script will back up the ownership and permissions in the backup directory
+recursively. It will obtain files/directories permissions inside the job
+path and it will save them in a single file (`permissions.facl`), which will
+be stored into the job backup directory's root.
 
-It requires ACL utilities in the client host. You can install the package with the following
-command: `apt-get install acl` (Debian based distributions)
+Benefits:
+ - Preserve ownership
+ - Permissions changelog
+
+### Requirements
+
+You need to have ACL utilities installed in the client host: `apt-get install acl` (Debian based distributions)
+
+### Installation
 
 [Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/permissions/backup-permissions.sh)
 
-The scripts uses `eb-remote.sh` library. You can [download it](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/permissions/eb-remote.sh)
+This scripts needs the `eb-remote.sh` library. If you don't have it, you need to [download it](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/permissions/eb-remote.sh)
 and save it in your _uploads/lib_ directory:
 
 ```sh
@@ -21,18 +30,24 @@ wget https://github.com/elkarbackup/elkarbackup-scripts/raw/master/permissions/e
 
 Script level configuration:
 
-```
-CLIENT PRE-SCRIPT:    NO
-CLIENT POST-SCRIPT:   NO
-JOB PRE-SCRIPT:       YES
-JOB POST-SCRIPT:      YES
-```
+| Script              | Enabled  |
+| ------------------- | -------- |
+| CLIENT PRE-SCRIPT   |  NO      |
+| CLIENT POST-SCRIPT  |  NO      | 
+| JOB PRE-SCRIPT      |  __YES__ |
+| JOB POST-SCRIPT     |  __YES__ |
+
+- To enable the JOB POST-SCRIPT it's optional. When you enable it, the script removes
+the `permissions.facl` file from the client after upload it to the ElkarBackup server
 
 
 ### Permissions restore
 
-You can restore the permissions with the following command:
+If you need to restore the permissions, you can use the following command:
 
 ```bash
+cd /mydatadir
 setfacl --restore=permissions.facl
 ```
+
+More info about getfacl: http://man7.org/linux/man-pages/man1/getfacl.1.html
