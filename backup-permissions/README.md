@@ -1,4 +1,4 @@
-## backup-permissions.sh
+## backup-permissions
 
 This script will back up the ownership and permissions in the backup directory
 recursively. It will obtain files/directories permissions inside the job
@@ -15,7 +15,7 @@ You need to have ACL utilities installed in the client host: `apt-get install ac
 
 ### Installation
 
-[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/permissions/backup-permissions.sh)
+[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/backup-permissions/backup-permissions.sh)
 
 This scripts needs the `eb-remote.sh` library. If you don't have it, you need to [download it](https://raw.githubusercontent.com/elkarbackup/elkarbackup-scripts/master/lib/eb-remote.sh)
 and save it in your _uploads/lib_ directory:
