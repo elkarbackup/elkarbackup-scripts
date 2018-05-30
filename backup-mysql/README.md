@@ -9,21 +9,20 @@ After the first copy, only modified databases will be copied.
 
 Script level configuration:
 
-```
-CLIENT PRE-SCRIPT:    NO
-CLIENT POST-SCRIPT:   NO
-JOB PRE-SCRIPT:       YES
-JOB POST-SCRIPT:      NO
-```
-
+| Script              | Enabled  |
+| ------------------- | -------- |
+| CLIENT PRE-SCRIPT   |  NO      |
+| CLIENT POST-SCRIPT  |  NO      | 
+| JOB PRE-SCRIPT      |  __YES__ |
+| JOB POST-SCRIPT     |  NO      |
 
 Create a New Job:
 
 ```
 Name: mysql
-Path: /root/backups/mysql
+Path: /root/backups/mysql (for instance)
 Description: MySQL dumps
-Pre-script: MySqlDumpAllDatabases.sh
+Pre-script enabled: backup-mysql.sh
 
 ```
 

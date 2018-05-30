@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Name:MySqlDumpAllDatabases.sh
+# Name: backup-mysql.sh
 # Description: This script backups all your local MySQL databases in individual files
 #              It will copy to Elkarbackup only the modified databases.
 # Use:  JOB level -> Pre-Script
