@@ -1,13 +1,17 @@
 elkarbackup-scripts
 ===================
 
-Official Pre-scripts and Post-scripts for [Elkarbackup](http://github.com/elkarbackup/elkarbackup) backup software
+Official scripts for [Elkarbackup](http://github.com/elkarbackup/elkarbackup):
 
-  * [MySqlDumpAllDatabases.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/MySqlDumpAllDatabases/README.md)
-  * [Nagios.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/Nagios/README.md)
-  * [ebReport](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/ebReport/README.md)
-  * [encrypt](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/encrypt/README.md)
-  * [dropbox](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/dropbox/README.md)
+| Name           | Description            |
+| -------------- | ---------------------- |
+| [dropbox.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/dropbox/) | Upload your files to Dropbox |
+| [encrypt.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/encrypt/) | Encrypt your backup files (with EncFS) |
+| [json-report.py](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/json-report/) | Print backup result in json format |
+| [mysqldump.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/mysqldump/) | Dump all the MySQL databases from the client's host |
+| [nagios.sh](https://github.com/elkarbackup/elkarbackup-scripts/blob/master/nagios/) | Report the backup job result to Nagios (via NSCA) |
+| [permissions.sh](https://github.com/elkarbackup/elkarbackup-scripts/tree/master/permissions) | Back up permissions/ownership in a file (with getfacl) |  
+
 
 ## Create your own script
 ### Available environment variables in scripts
