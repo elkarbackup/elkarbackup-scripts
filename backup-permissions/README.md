@@ -9,7 +9,7 @@ Benefits:
  - Preserve ownership
  - Permissions changelog
 
-####Caution
+#### Caution
 This script will generate a temporary file (`permissions.facl`) in the job path, into the client host. This text file contains a list of file paths and it's permissions. By default this file will be deleted in the post-script level. Anyway, you need to know that if your directory is a publickly accessible path (i.e. apache webroot, samba share, etc), anyone could access this file during the backup process.
 
 Workaround: change the `ACLFILE` path to a different directory (i.e. /etc/elkarbackup/permissions.facl). You will need create a new backup job for this directory (/etc/elkarbackup).
