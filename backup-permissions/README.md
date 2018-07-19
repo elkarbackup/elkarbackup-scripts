@@ -17,15 +17,6 @@ You need to have ACL utilities installed in the client host: `apt-get install ac
 
 [Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/backup-permissions/backup-permissions.sh)
 
-This scripts needs the `eb-remote.sh` library. If you don't have it, you need to [download it](https://raw.githubusercontent.com/elkarbackup/elkarbackup-scripts/master/lib/eb-remote.sh)
-and save it in your _uploads/lib_ directory:
-
-```sh
-cd /var/spool/elkarbackup/uploads
-mkdir lib && cd lib
-wget https://github.com/elkarbackup/elkarbackup-scripts/raw/master/permissions/eb-remote.sh
-```
-
 ### Configuration
 
 Script level configuration:
