@@ -20,8 +20,18 @@ SSHPARAMS='-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no'
 
 MYSQL=/usr/bin/mysql
 MYSQLDUMP=/usr/bin/mysqldump
-MYSQLCNF=/etc/mysql/debian.cnf
-#MYSQLCNF=/root/.my.cnf
+
+# If Debian based Distro such as Ubuntu/Debian/Mint use debian.cnf 
+if [ -f "/etc/debian_version" ]
+then
+
+	MYSQLCNF=/etc/mysql/debian.cnf
+
+else
+
+	MYSQLCNF=/root/.my.cnf
+
+fi
 
 TEST=`ssh $SSHPARAMS $USER@$HOST "test -f $MYSQLCNF && echo $?"`
 if [ ! ${TEST} ]; then
