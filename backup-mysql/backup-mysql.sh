@@ -24,16 +24,14 @@ MYSQLDUMP=/usr/bin/mysqldump
 # If Debian based Distro such as Ubuntu/Debian/Mint use debian.cnf 
 if [ -f "/etc/debian_version" ]
 then
-
 	MYSQLCNF=/etc/mysql/debian.cnf
-
 else
 
 	MYSQLCNF=/root/.my.cnf
-
 fi
 
 TEST=`ssh $SSHPARAMS $USER@$HOST "test -f $MYSQLCNF && echo $?"`
+
 if [ ! ${TEST} ]; then
     echo "[ERROR] mysql config file doesn't exist $MYSQLCNF"
     exit 1
@@ -45,6 +43,7 @@ then
     echo "Only allowed at job level" >&2
     exit 1
 fi
+
 if [ "$ELKARBACKUP_EVENT" == "PRE" ]
 then
     # If backup directory doesn't exist, create it
