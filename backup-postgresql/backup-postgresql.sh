@@ -16,14 +16,14 @@ DIR=$(echo $ELKARBACKUP_URL | cut -d ":" -f2)    # path
 TMP="/tmp/ebpgdump"
 PSQL="/usr/bin/psql"
 PG_DUMP="/usr/bin/pg_dump"
-SSHPARAMS='-o StrictHostKeyChecking=no'
+SSHPARAMS='-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no'
 
 TEST=$(ssh $SSHPARAMS $USER@$HOST "test -f ~/.pgpass && echo $?")
 
 if [ ! ${TEST} ]
 then
 	echo "[ERROR] PostgreSQL .pgpass credentials not found"
-	exit 1
+#	exit 1
 fi
 
 PSQL_USER=$(ssh $SSHPARAMS $USER@$HOST "cat ~/.pgpass | cut -d: -f4")
