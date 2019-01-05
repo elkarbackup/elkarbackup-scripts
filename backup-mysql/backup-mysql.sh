@@ -71,7 +71,7 @@ then
 
         for db in $databases; do
             # Dump it!
-            ssh $SSHPARAMS $USER@$HOST "$MYSQLDUMP --defaults-file=$MYSQLCNF --force --opt --databases $db --single-transaction > \"$TMP/$db.sql\""
+            ssh $SSHPARAMS $USER@$HOST "$MYSQLDUMP --defaults-file=$MYSQLCNF --force --opt --databases $db --single-transaction --quick --lock-tables=FALSE > \"$TMP/$db.sql\""
             # If we already have an old version...
             TEST=`ssh $SSHPARAMS $USER@$HOST "test -f $DIR/$db.sql && echo $?"`
             if [ ${TEST} ]; then
