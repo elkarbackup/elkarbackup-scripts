@@ -20,7 +20,7 @@ Create a New Job:
 
 ```
 Name: PostgreSQL
-Path: /root/backups/PostgreSQL (for instance)
+Path: /home/elkar/DB (for instance)
 Description: PostgreSQL dumps
 Pre-script enabled: backup-PostgreSQL.sh
 
