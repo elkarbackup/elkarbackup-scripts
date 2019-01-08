@@ -16,7 +16,7 @@ HOST="${URL#*@}"                                # host
 DIR=`echo $ELKARBACKUP_URL | cut -d ":" -f2`    # path
 TMP=/tmp/ebmysqldump
 
-SSHPARAMS='-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no'
+SSHPARAMS="-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"
 
 MYSQL=/usr/bin/mysql
 MYSQLDUMP=/usr/bin/mysqldump
