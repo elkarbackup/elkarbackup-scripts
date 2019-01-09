@@ -16,7 +16,7 @@ DIR=$(echo $ELKARBACKUP_URL | cut -d ":" -f2)    # path
 TMP="/tmp/ebpgdump"
 PSQL="/usr/bin/psql"
 PG_DUMP="/usr/bin/pg_dump"
-SSHPARAMS='-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no'
+SSHPARAMS="-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"
 
 TEST=$(ssh $SSHPARAMS $USER@$HOST "test -f ~/.pgpass && echo $?")
 

@@ -9,7 +9,7 @@ set -e
 URL=`echo $ELKARBACKUP_URL | cut -d ":" -f1`    # user@serverip
 USER="${URL%@*}"                                # user
 HOST="${URL#*@}"                                # host
-SSHPARAMS='-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no'
+SSHPARAMS="-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no  $ELKARBACKUP_SSH_ARGS"
 
 # Run a commmand via SSH and return the exit code
 function ssh_exec {
