@@ -16,14 +16,22 @@ HOST="${URL#*@}"                                # host
 DIR=`echo $ELKARBACKUP_URL | cut -d ":" -f2`    # path
 TMP=/tmp/ebmysqldump
 
-SSHPARAMS='-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no'
+SSHPARAMS="-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"
 
 MYSQL=/usr/bin/mysql
 MYSQLDUMP=/usr/bin/mysqldump
-MYSQLCNF=/etc/mysql/debian.cnf
-#MYSQLCNF=/root/.my.cnf
+
+# If Debian based Distro such as Ubuntu/Debian/Mint use debian.cnf 
+if [ -f "/etc/debian_version" ]
+then
+	MYSQLCNF=/etc/mysql/debian.cnf
+else
+
+	MYSQLCNF=/root/.my.cnf
+fi
 
 TEST=`ssh $SSHPARAMS $USER@$HOST "test -f $MYSQLCNF && echo $?"`
+
 if [ ! ${TEST} ]; then
     echo "[ERROR] mysql config file doesn't exist $MYSQLCNF"
     exit 1
@@ -35,6 +43,7 @@ then
     echo "Only allowed at job level" >&2
     exit 1
 fi
+
 if [ "$ELKARBACKUP_EVENT" == "PRE" ]
 then
     # If backup directory doesn't exist, create it
@@ -61,7 +70,7 @@ then
 
         for db in $databases; do
             # Dump it!
-            ssh $SSHPARAMS $USER@$HOST "$MYSQLDUMP --defaults-file=$MYSQLCNF --force --opt --databases $db --single-transaction > \"$TMP/$db.sql\""
+            ssh $SSHPARAMS $USER@$HOST "$MYSQLDUMP --defaults-file=$MYSQLCNF --force --opt --databases $db --single-transaction --quick --lock-tables=FALSE > \"$TMP/$db.sql\""
             # If we already have an old version...
             TEST=`ssh $SSHPARAMS $USER@$HOST "test -f $DIR/$db.sql && echo $?"`
             if [ ${TEST} ]; then
