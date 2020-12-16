@@ -3,7 +3,7 @@
 This script backups all your client's PostgreSQL databases in individual files.
 After the first copy, only modified databases will be copied.
 
-[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/backup-mysql/backup-mysql.sh)
+[Download URL](https://github.com/elkarbackup/elkarbackup-scripts/raw/master/backup-postgresql/backup-postgresql.sh)
 
 ### Configuration
 
