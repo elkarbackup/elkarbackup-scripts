@@ -22,7 +22,7 @@ MYSQL=/usr/bin/mysql
 MYSQLDUMP=/usr/bin/mysqldump
 
 # If Debian based Distro such as Ubuntu/Debian/Mint use debian.cnf 
-if [ -f "/etc/debian_version" ]
+if [ $(ssh $SSHPARAMS $USER@$HOST [[ -f /etc/debian_version ]];echo $?) -eq 0 ]
 then
 	MYSQLCNF=/etc/mysql/debian.cnf
 else
