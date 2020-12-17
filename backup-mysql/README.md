@@ -49,3 +49,9 @@ password=1234
 Important: this file must have 400 permissions:
 
 `chmod 0400 /root/.my.cnf`
+
+### If you use docker
+
+If you use docker image you need to change path to .ssh/id_rsa in script.  
+Change line: `SSHPARAMS="-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"`  
+to line: `SSHPARAMS="-i /app/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"`
