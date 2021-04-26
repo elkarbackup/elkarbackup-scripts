@@ -40,3 +40,9 @@ To run "psql" and "pg_dump" without password prompt, This script needs (~/.pgpas
 Important: this file must have 400 permissions:
 
 `chmod 0400 ~/.pgpass`
+
+### If you use docker
+
+If you use docker image you need to change path to .ssh/id_rsa in script.  
+Change line: `SSHPARAMS="-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"`  
+to line: `SSHPARAMS="-i /app/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"`
