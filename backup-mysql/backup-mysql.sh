@@ -18,8 +18,8 @@ TMP=/tmp/ebmysqldump
 
 SSHPARAMS="-i /var/lib/elkarbackup/.ssh/id_rsa -o StrictHostKeyChecking=no $ELKARBACKUP_SSH_ARGS"
 
-MYSQL=/usr/bin/mysql
-MYSQLDUMP=/usr/bin/mysqldump
+MYSQL=mysql
+MYSQLDUMP=mysqldump
 
 # If Debian based Distro such as Ubuntu/Debian/Mint use debian.cnf 
 if [ $(ssh $SSHPARAMS $USER@$HOST [[ -f /etc/debian_version ]];echo $?) -eq 0 ]
